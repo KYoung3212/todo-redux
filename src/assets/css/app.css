@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: quest;
     src: url(../fonts/quest.ttf);
 }
@@ -40,4 +40,4 @@ body {
     to {
         transform: rotate(360deg);
     }
-}
+} */
