@@ -11,3 +11,11 @@ export async function getAllListData(){
         payload: resp
     }
 }
+
+export function addItem(item){
+    const resp = axios.post(`${BASE_URL}/todos${API_KEY}`, item);
+    return {
+        type: types.ADD_ITEM,
+        payload: resp
+    }
+}
