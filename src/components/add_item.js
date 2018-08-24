@@ -9,7 +9,8 @@ class AddItem extends Component {
         // console.log('Handle Add Item Aargs:', arguments)
         console.log('Handle Add Item values:', values);
         await this.props.addItem(values);  //need to bind this, since it is undefined, so changed it in to an arrow function
-        this.props.history.push('/')
+        this.props.history.push('/');
+        this.props.reset(); //if you want to just clear input and not redirect
     }
     // renderInput(props){
 
