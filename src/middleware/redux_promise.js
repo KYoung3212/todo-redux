@@ -1,7 +1,5 @@
 export default (store) => (next) =>  async (action) => {
 
-    console.log('Action', action);
-
     if(!action.payload || !action.payload.then){ 
         return next(action);
      }
