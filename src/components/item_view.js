@@ -1,0 +1,40 @@
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getSingleItem, deleteItem, resetSingle} from '../actions';
+
+class ItemView extends Component {
+
+    componentDidMount(){
+        console.log('ID:', this.props.match.params.id)
+        this.props.getSingleItem(this.props.match.params.id);
+    }
+    componentWillUnmount(){
+        this.props.resetSingle();
+    }
+    handleDelete(){
+        this.props.deleteItem(this.props.match.params.id);
+    }
+
+    render(){
+        console.log('Item:', this.props.item);
+        if(this.props.error){
+            return <h2 className = "center red">{this.props.error}</h2>
+        }
+        return(
+            <div>
+                <h1 className = "center"> View Item</h1>
+                <h1>{this.props.item.title}</h1>
+                <button onClick= {this.handleDelete.bind(this)} className = "btn red darken-2"> Delete Item</button>
+            </div>
+        );
+    }
+}
+
+function mapStateToProps(state){
+    return {
+        item: state.list.single,
+        error: state.list.error
+    }
+}
+
+export default connect(mapStateToProps, {getSingleItem: getSingleItem, deleteItem: deleteItem, resetSingle: resetSingle})(ItemView);
